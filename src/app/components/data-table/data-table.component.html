@@ -1,0 +1,33 @@
+<!-- <ng-container id="" *ngFor="let item of getDataTable(); let i = index;"> -->
+<ng-container>
+  <!-- <h1>{{item.name}}</h1> -->
+  <!-- <p>{{item.friends}}</p> -->
+  <!-- <span>{{item.age}}</span> -->
+  <!-- <span>{{item.gender}}</span> -->
+  <!-- <span>{{item.company}}</span> -->
+  <!-- <span>{{item.balance}}</span> -->
+  <!-- <img src={{item.picture}} alt=""> -->
+
+</ng-container>
+
+<div class="container">
+  <!-- <table class="bordered highlight centered"> -->
+  <table class="table ">
+    <caption>{{tableName}}</caption>
+    <thead>
+      <tr>
+        <th *ngFor="let item of getHeadTable()">{{item}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item_data of getDataTable()">
+        <ng-container *ngFor="let it of getHeadTable()">
+          <td>{{item_data[it]}}</td>
+        </ng-container>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr *ngIf="getColumnSize()"><td colspan=4>My Footer Table </td></tr>
+    </tfoot>
+  </table>
+</div>

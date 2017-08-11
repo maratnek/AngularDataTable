@@ -1,0 +1,38 @@
+// table {
+//   width: 100%;
+//   max-width: 80%;
+//   margin: auto;
+//   border-spacing: 5px;
+//   border-collapse: collapse;
+//   caption {
+//     padding-bottom: 30px;
+//     padding-top: 40px;
+//     font-size: 2em;
+//   }
+//   th {
+//     text-align: left;
+//   }
+//   td, th {
+//     padding: 10px;
+//   }
+//   tbody tr:hover {
+//     border: 2px solid yellow;
+//     background: white;
+//     color: black;
+//     transition: 0.2s, 1s ease-out background, 1s color;
+//     transform-origin: center;
+//     transform: scale(1.05);
+//   }
+//   tfoot {
+//     text-align: center;
+//     background: black;
+//     color: white;
+//   }
+//   thead {
+//     background: yellow;
+//   }
+//   tbody {
+//     color: white;
+//     background: #444;
+//   }
+// }
