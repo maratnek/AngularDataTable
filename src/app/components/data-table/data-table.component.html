@@ -1,11 +1,5 @@
-<h2>Power Boost Calculator</h2>
-    <div>Normal power: <input [(ngModel)]="power"></div>
-    <div>Boost factor: <input [(ngModel)]="factor"></div>
-    <p>
-      Super Hero Power: {{power | exponentialStrength: factor}}
-    </p>
-
-
+<input (keyup)="onKey($event)">
+  <p>{{values}}</p>
 <hr>
 
 <h2 id="appChangeTd">UnlessDirective</h2>
@@ -51,11 +45,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item_data of getDataTable()">
-        <ng-container *ngFor="let it of getHeadTable()">
-          <td >
-            <span *ngIf="isActive">{{item_data[it]}} </span>
-            <input type="text" name="" (click)="isActive=false" value="">
+      <tr *ngFor="let item_data of getDataTable();let h = index;">
+        <ng-container *ngFor="let it of getHeadTable(); let v = index;">
+          <td id="{{h*10+v}}" (click)="MyId()">
+            <span *ngIf="isActive">{{item_data[it]}}</span>
+            <span *ngIf="isInputActive">{{item_data[it]}}
+            <input  type="text" name="cell"  value="{{item_data[it]}}">
+          </span>
           </td>
         </ng-container>
       </tr>

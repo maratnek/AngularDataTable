@@ -17,8 +17,12 @@ export class DataTableComponent implements OnInit {
   private tableName: string;
   condition = false;
   isActive = true;
-  power = 5;
-  factor = 1;
+  isInputActive = false;
+
+  values = '';
+   onKey(event: any) { // without type info
+    this.values += event.target.value + ' | ';
+  }
 
   constructor(private dtService: DataTableService) {
     console.log('DataTableComponent...');
@@ -32,7 +36,6 @@ export class DataTableComponent implements OnInit {
       for(let key in data[0])
         this.head.push(key);
         console.log(this.head);
-
     });
   }
 
