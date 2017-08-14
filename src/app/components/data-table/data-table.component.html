@@ -1,3 +1,46 @@
+<h2>Power Boost Calculator</h2>
+    <div>Normal power: <input [(ngModel)]="power"></div>
+    <div>Boost factor: <input [(ngModel)]="factor"></div>
+    <p>
+      Super Hero Power: {{power | exponentialStrength: factor}}
+    </p>
+
+
+<hr>
+
+<h2 id="appChangeTd">UnlessDirective</h2>
+<p>
+  The condition is currently
+  <span [ngClass]="{ 'a': !condition, 'b': condition, 'unless': true }">{{condition}}</span>.
+  <button
+    (click)="condition = !condition"
+    [ngClass] = "{ 'a': condition, 'b': !condition }" >
+    Toggle condition to {{condition ? 'false' : 'true'}}
+  </button>
+</p>
+<p *appChangeTd="condition" class="unless a">
+  (A) This paragraph is displayed because the condition is false.
+</p>
+
+<p *appChangeTd="!condition" class="unless b">
+  (B) Although the condition is true,
+  this paragraph is displayed because myUnless is set to false.
+</p> -->
+
+
+<h4>UnlessDirective with template</h4>
+<p *appChangeTd="condition">Show this sentence unless the condition is true.</p>
+
+<p template="appChangeTd condition" class="code unless">
+  (A) &lt;p template="appChangeTd condition" class="code unless"&gt;
+</p>
+
+<ng-template [appChangeTd]="condition">
+  <p class="code unless">
+    (A) &lt;template [appChangeTd]="condition"&gt;
+  </p>
+</ng-template>
+
 <!-- <div class="container"> -->
   <table class="bordered highlight centered responsive-table" style="max-width:90%; margin:auto">
   <!-- <table class="table "> -->
@@ -10,7 +53,10 @@
     <tbody>
       <tr *ngFor="let item_data of getDataTable()">
         <ng-container *ngFor="let it of getHeadTable()">
-          <td>{{item_data[it]}}</td>
+          <td >
+            <span *ngIf="isActive">{{item_data[it]}} </span>
+            <input type="text" name="" (click)="isActive=false" value="">
+          </td>
         </ng-container>
       </tr>
     </tbody>

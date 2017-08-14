@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataTableService } from '../../services/data-table.service';
+import { ChangeTdDirective } from '../../directives/change-td.directive';
 // import {Observable} from 'rxjs';
 // import 'rxjs/add/operator/map';
 
@@ -14,6 +15,10 @@ export class DataTableComponent implements OnInit {
 
   private head: string[];
   private tableName: string;
+  condition = false;
+  isActive = true;
+  power = 5;
+  factor = 1;
 
   constructor(private dtService: DataTableService) {
     console.log('DataTableComponent...');
