@@ -1,18 +1,6 @@
-<!-- <ng-container id="" *ngFor="let item of getDataTable(); let i = index;"> -->
-<ng-container>
-  <!-- <h1>{{item.name}}</h1> -->
-  <!-- <p>{{item.friends}}</p> -->
-  <!-- <span>{{item.age}}</span> -->
-  <!-- <span>{{item.gender}}</span> -->
-  <!-- <span>{{item.company}}</span> -->
-  <!-- <span>{{item.balance}}</span> -->
-  <!-- <img src={{item.picture}} alt=""> -->
-
-</ng-container>
-
-<div class="container">
-  <!-- <table class="bordered highlight centered"> -->
-  <table class="table ">
+<!-- <div class="container"> -->
+  <table class="bordered highlight centered responsive-table" style="max-width:90%; margin:auto">
+  <!-- <table class="table "> -->
     <caption>{{tableName}}</caption>
     <thead>
       <tr>
@@ -30,4 +18,4 @@
       <tr *ngIf="getColumnSize()"><td colspan=4>My Footer Table </td></tr>
     </tfoot>
   </table>
-</div>
+<!-- </div> -->
