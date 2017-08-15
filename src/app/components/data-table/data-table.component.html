@@ -1,5 +1,26 @@
-<input (keyup)="onKey($event)">
+<div [class.hidden]="!isSpecial">Show with class</div>
+<div [class.hidden]="isSpecial">Hide with class</div>
+
+<div [style.display]="isSpecial ? 'block' : 'none'">Show with style</div>
+<div [style.display]="isSpecial ? 'none'  : 'block'">Hide with style</div>
+
+<input (focusout)="onFocus($event)">
   <p>{{values}}</p>
+<hr>
+
+<!-- <input *ngIf="v1" (focusout)="v1=false" [(ngModel)]="values1">
+  <p *ngIf="!v1" (click)="v1=true">Par: {{values1}}</p>
+<hr> -->
+
+  <!-- <h1 *ngIf="false">{{name}}</h1>
+   <input [(ngModel)]="name" #ctr="ngModel" #ct="ngModel" required>
+
+    <p>Value: {{ name }}</p>
+    <p>Valid: {{ ctr.valid }}</p>
+    <p>Valid: {{ ctr.isDisabled }}</p>
+    <p>Name: {{ ctr.name }}</p>
+
+    <button (click)="setValue()">Set value</button> -->
 <hr>
 
 <h2 id="appChangeTd">UnlessDirective</h2>
@@ -19,7 +40,7 @@
 <p *appChangeTd="!condition" class="unless b">
   (B) Although the condition is true,
   this paragraph is displayed because myUnless is set to false.
-</p> -->
+</p>
 
 
 <h4>UnlessDirective with template</h4>
@@ -47,11 +68,9 @@
     <tbody>
       <tr *ngFor="let item_data of getDataTable();let h = index;">
         <ng-container *ngFor="let it of getHeadTable(); let v = index;">
-          <td id="{{h*10+v}}" (click)="MyId()">
-            <span *ngIf="isActive">{{item_data[it]}}</span>
-            <span *ngIf="isInputActive">{{item_data[it]}}
-            <input  type="text" name="cell"  value="{{item_data[it]}}">
-          </span>
+          <td>
+            <input [hidden]="!getChangeCell(h,v)" (focus)="changeFocusCell(h,v,$event)" [(ngModel)]="item_data[it]" value="{{item_data[it]}}">
+            <p [hidden]="getChangeCell(h,v)" (click)="changeShowCell(h,v)">{{item_data[it]}}</p>
           </td>
         </ng-container>
       </tr>

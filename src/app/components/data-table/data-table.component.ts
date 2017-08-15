@@ -15,13 +15,23 @@ export class DataTableComponent implements OnInit {
 
   private head: string[];
   private tableName: string;
+  private changeCell = [];
+  private changeOneCell = -1;
   condition = false;
   isActive = true;
-  isInputActive = false;
+
+  name: string = '';
+
+  setValue() { this.name = 'Nancy'; }
 
   values = '';
-   onKey(event: any) { // without type info
+values1 = 'test';
+  onKey(event: any) { // without type info
+    console.log(event);
     this.values += event.target.value + ' | ';
+  }
+  onFocus(event: any) { // without type info
+    console.log(event);
   }
 
   constructor(private dtService: DataTableService) {
@@ -35,8 +45,30 @@ export class DataTableComponent implements OnInit {
       this.dataTable = data;
       for(let key in data[0])
         this.head.push(key);
-        console.log(this.head);
+      console.log(this.head);
+      this.changeCell.push(false);
     });
+  }
+
+  getChangeCell(h,v){
+    return this.changeCell[h*10+v];
+  }
+
+  changeFocusCell(h,v,event){
+    if (event.cancelable)
+      console.log('Cancelable');
+      // this.changeCell[this.changeOneCell] = false;
+  }
+
+  changeShowCell(h,v){
+    if (this.changeOneCell < 0)
+        this.changeOneCell = h*10+v;
+    else
+    {
+      this.changeCell[this.changeOneCell] = false;
+      this.changeOneCell = h*10+v;
+    }
+    this.changeCell[this.changeOneCell] = true;
   }
 
   getHeadTable(){
